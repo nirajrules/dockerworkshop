@@ -12,7 +12,7 @@ RUN msbuild SampleIISApp.csproj /p:OutputPath=c:\out /p:Configuration=Release
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ENV API_URL="http://SampleApi/api/values"
+ENV API_URL="http://iisapi/api/values"
 
 WORKDIR C:\SampleIISApp
 RUN Remove-Website -Name 'Default Web Site'; `
@@ -21,3 +21,6 @@ RUN Remove-Website -Name 'Default Web Site'; `
                 -ApplicationPool '.NET v4.5'
 
 COPY --from=builder C:\out\_PublishedWebsites\SampleIISApp C:\SampleIISApp
+COPY --from=builder C:\src\SampleIISApp\SetVariables.ps1 C:\
+
+ENTRYPOINT ["powershell", "C:\\SetVariables.ps1"]

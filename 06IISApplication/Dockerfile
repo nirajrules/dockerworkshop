@@ -20,3 +20,5 @@ RUN Remove-Website -Name 'Default Web Site'; `
                 -ApplicationPool '.NET v4.5'
 
 COPY --from=builder C:\out\_PublishedWebsites\SampleIISApp C:\SampleIISApp
+
+ENTRYPOINT ["powershell", "sample.ps1"]

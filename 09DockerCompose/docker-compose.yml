@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  iisservice:
+    image: docker.io/nirajdock/webapplication:v3
+    env_file: ./env/dev.env
+    ports:
+      - "8888:80"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - webapp_net
+    # volumes:
+    # - type: bind
+    #   source: d:\tshoot
+    #   target: c:\tshoot
+  apiservice:
+    image: nirajdock/iisapi:v1
+    env_file: ./env/dev.env
+    ports:
+      - "50000:80"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - webapp_net
+    # volumes:
+    # - type: bind
+    #   source: d:\tshoot
+    #   target: c:\tshoot
+
+networks:
+  webapp_net:
+    driver: overlay
+    external: true

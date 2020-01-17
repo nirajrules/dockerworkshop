@@ -1,0 +1,54 @@
+﻿@page
+@model WeatherWeb.Pages.Weather.WeatherDataModel
+
+@{
+    ViewData["Title"] = "WeatherData";
+}
+
+<h1>WeatherData</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WeatherData[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeatherData[0].TemperatureC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeatherData[0].TemperatureF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeatherData[0].Summary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.WeatherData) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemperatureC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemperatureF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Summary">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Summary">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Summary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
