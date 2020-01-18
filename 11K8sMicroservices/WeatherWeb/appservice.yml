@@ -8,5 +8,5 @@ spec:
     app: webapp
   ports:
   - port: 32320
-    targetPort: 32320
+    targetPort: 80
     nodePort: 32320
