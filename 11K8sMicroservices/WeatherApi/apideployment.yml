@@ -1,0 +1,23 @@
+Kind: apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apiapp
+spec:
+  selector:
+    matchLabels:
+      app: apiapp
+  template:
+    metadata:
+      labels:
+        app: apiapp
+    spec:
+      containers:
+      - name: apiapp
+        image: weatherapi
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 32321
+        
