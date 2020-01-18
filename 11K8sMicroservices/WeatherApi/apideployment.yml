@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: apiapp
-        image: weatherapi
+        image: nirajdock/weatherapi
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 32321
+        - containerPort: 80

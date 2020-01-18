@@ -26,7 +26,7 @@ namespace WeatherWeb.Pages.Weather
         {
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("http://localhost:64303/weatherforecast"))
+                using (var response = await httpClient.GetAsync("http://apiservice.kubernetes-dashboard.svc.cluster.local:32321/weatherforecast"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     WeatherData = JsonConvert.DeserializeObject<List<WeatherData>>(apiResponse);
