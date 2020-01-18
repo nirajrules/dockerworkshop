@@ -1,8 +1,9 @@
-Kind: apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apiapp
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: apiapp
@@ -20,4 +21,3 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 32321
-        

@@ -1,23 +1,24 @@
-Kind: apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webApp
+  name: webapp
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: webApp
+      app: webapp
   template:
     metadata:
       labels:
-        app: webApp
+        app: webapp
     spec:
       containers:
-      - name: webApp
-        image: WeatherWeb
+      - name: webapp
+        image: weatherweb
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 32321
+        - containerPort: 32320
         
