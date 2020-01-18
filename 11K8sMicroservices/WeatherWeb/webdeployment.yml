@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: weatherweb
+        image: nirajdock/weatherweb
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 32320
+        - containerPort: 80
         
