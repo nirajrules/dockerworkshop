@@ -1,0 +1,3 @@
+kubectl exec -it mypod bash
+cat /etc/foo/admin
+cat /etc/foo/password
