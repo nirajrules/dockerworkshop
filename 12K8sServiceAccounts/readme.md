@@ -1,8 +1,9 @@
 #exec into default-pod
-kubectl exec -it pod-default --sh
+kubectl exec -it pod-demo-sa sh
 
 #install CURL
-apk add --update curl
+apt-get update 
+apt-get install -y curl
 
 # Get the ServiceAccount token from within the Pod's container
 TOKEN=$(cat /run/secrets/kubernetes.io/serviceaccount/token)
