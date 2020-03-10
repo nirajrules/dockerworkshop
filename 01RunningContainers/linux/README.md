@@ -12,5 +12,5 @@ docker container run --interactive --tty \<yourname\>/printenv:v1 sh
 
 ## Background (detached) Container
 docker container run --detach \<yourname\>/printenv:v1 ping localhost -c 100 <br />
-docker container logs <<container ID>> | wc <br />
+docker container logs \<container ID\> | wc <br />
 docker container ls -a | grep \<container ID\>
