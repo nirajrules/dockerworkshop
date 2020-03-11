@@ -1,3 +1,5 @@
+echo -n 'Password' | base64 #Encode a secret before creating it via secret.yml
+echo -n 'UGFzc3dvcmQ=' | base64 --decode #Decode a secret to find its value
 kubectl exec -it mypod bash
 cat /etc/foo/admin
 cat /etc/foo/password
