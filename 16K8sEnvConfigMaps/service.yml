@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-color-service
+  namespace: default
+spec:
+  ports:
+  - nodePort: 34080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    name: webapp-color
+  type: NodePort
