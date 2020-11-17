@@ -24,7 +24,7 @@ This sample demonstrates working of L7 Interlock routing with Swarm workloads. T
     docker stack deploy --compose-file docker-compose.yml web
     ```
 
-5. Test the application using CURL trying to access the hosts entry specificed in the docker-compose file
+5. Test the application using CURL by accessing the hosts entry specificed in the docker-compose file on port 8443 (Interlock HTTPS port)
 
     ```bash
     curl -vvvv -k --resolve apps.niraj.dockerps.io:8443:<public-ip-address-of-a-cluster-node> https://apps.niraj.dockerps.io:8443
