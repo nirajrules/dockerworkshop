@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  webservice:
+    image: nirajdock/weatherweb
+    deploy:
+      replicas: 1
+      labels:
+        com.docker.lb.hosts: apps.niraj.dockerps.io
+        com.docker.lb.network: webapp_net
+        com.docker.lb.port: 443
+        com.docker.lb.ssl_passthrough: "true"
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 500M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - webapp_net
+    secrets:
+      - viz-server-cert
+      - viz-server-key
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/run/secrets/viz-server-cert
+secrets:
+  viz-server-cert:
+    external: true
+  viz-server-key:
+    external: true
+networks:
+  webapp_net:
+    driver: overlay
+    external: true
