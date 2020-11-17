@@ -12,13 +12,19 @@ This sample demonstrates working of L7 Interlock routing with Swarm workloads. T
     docker secret create viz-server-cert aspnetapp.pfx
     ```
 
-3. Deploy Docker Stack
+3. Create Docker Network
+
+    ```bash
+    docker network create -d overlay  webapp_net
+    ```
+
+4. Deploy Docker Stack
 
     ```bash
     docker stack deploy --compose-file docker-compose.yml web
     ```
 
-4. Test the application using CURL trying to access the hosts entry specificed in the docker-compose file
+5. Test the application using CURL trying to access the hosts entry specificed in the docker-compose file
 
     ```bash
     curl -vvvv -k --resolve apps.niraj.dockerps.io:8443:<public-ip-address-of-a-cluster-node> https://apps.niraj.dockerps.io:8443
