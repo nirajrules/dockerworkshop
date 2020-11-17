@@ -4,7 +4,7 @@ This sample demonstrates working of L7 Interlock routing with Swarm workloads. T
 
 ## Steps to run the sample
 
-1. Git clone the folder locally
+1. Clone the folder locally
 
 2. Create Docker Secrets
 
